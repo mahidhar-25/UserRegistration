@@ -72,18 +72,20 @@ public class Main {
         }
 
 
-     //   Usecase 5
+     //   Usecase 5 , 6
         String password="" ;
-        System.out.println("enter your phone number : \n 1. Password should contain atleast 8 characters");
+        System.out.println("enter your password : \n" +
+                " 1. Password should contain at least 8 characters \n" +
+                " 2. Should have at least 1 Uppercase letter");
         isInputValidated = false;
         while (!isInputValidated) {
             password = input.next();
             if(UserValidation.validatePassword(password)){
-                System.out.println(password + " has passed phoneNumber validation ");
+                System.out.println(password + " has passed password validation ");
                 isInputValidated = true;
             }else{
                 System.out.println("Your Previous input " + password + " did not meet our rules");
-                System.out.println("Enter phoneNumber according to the rules : ");
+                System.out.println("Enter password according to the rules : ");
             }
         }
 
