@@ -13,15 +13,28 @@ public class Main {
         String firstName="" ;
         System.out.println("enter your first name : \n 1. First letter should be caps \n 2. firstName should be min of 3 char  ");
 
-        while (isInputValidated) {
+        while (!isInputValidated) {
             firstName = input.next();
             if(UserValidation.validateFirstName(firstName)){
-                System.out.println(firstName + " has passed validation ");
+                System.out.println(firstName + " has passed firstname validation ");
                 isInputValidated = true;
             }else{
                 System.out.println("Your Previous input " + firstName + " did not meet our rules");
                 System.out.println("Enter First Name according to the rules : ");
-                isInputValidated = false;
+            }
+        }
+        //Usecase 2
+        String lastName="" ;
+        System.out.println("enter your last name : \n 1. First letter should be caps \n 2. lastName should be min of 3 char  ");
+       isInputValidated = false;
+        while (!isInputValidated) {
+            lastName = input.next();
+            if(UserValidation.validateLastName(lastName)){
+                System.out.println(lastName + " has passed lastname validation ");
+                isInputValidated = true;
+            }else{
+                System.out.println("Your Previous input " + lastName + " did not meet our rules");
+                System.out.println("Enter Last Name according to the rules : ");
             }
         }
 
