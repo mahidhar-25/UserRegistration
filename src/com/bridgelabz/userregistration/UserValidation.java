@@ -8,6 +8,7 @@ public class UserValidation {
     public static final String LAST_NAME_REGEX = "[A-Z][A-Za-z]{2}[A-Za-z]*";
     public static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9-+]*([.][A-Za-z0-9-]+)*@[A-Za-z0-9-]+([.][a-zA-Z][a-zA-Z]+)([.][a-zA-Z][a-zA-Z]+)?$";
 
+    public static final String PHONE_NUMBER_REGEX = "(0|[+]91)?[7-9][0-9]{9}";
     /*
     @desc : function to validate whether entered first is name is valid or not
     @param : String - first name
@@ -39,5 +40,16 @@ public class UserValidation {
         Pattern emailRegex = Pattern.compile(EMAIL_REGEX);
         Matcher emailMatcher = emailRegex.matcher(email);
         return emailMatcher.matches();
+    }
+
+    /*
+ @desc : function to validate whether entered phone number is valid or not
+ @param : String - phone number
+ @return : boolean if it has match with regex pattern
+  */
+    public static boolean validaPhoneNumber(String phoneNumber){
+        Pattern phoneNumberRegex = Pattern.compile(PHONE_NUMBER_REGEX);
+        Matcher phoneNumberMatcher = phoneNumberRegex.matcher(phoneNumber);
+        return phoneNumberMatcher.matches();
     }
 }

@@ -54,6 +54,23 @@ public class Main {
             }
         }
 
+        //Usecase 4
+        String phoneNumber="" ;
+        System.out.println("enter your phone number : \n 1. Country code should be 91 / 0 (if landline) \n " +
+                "2. phone number should start with 7 , 8 , 9 \n " +
+                "3. Phone number should have exactly 10 digits");
+        isInputValidated = false;
+        while (!isInputValidated) {
+            phoneNumber = input.next();
+            if(UserValidation.validaPhoneNumber(phoneNumber)){
+                System.out.println(phoneNumber + " has passed phoneNumber validation ");
+                isInputValidated = true;
+            }else{
+                System.out.println("Your Previous input " + phoneNumber + " did not meet our rules");
+                System.out.println("Enter phoneNumber according to the rules : ");
+            }
+        }
+
 
 
     }
