@@ -37,7 +37,22 @@ public class Main {
                 System.out.println("Enter Last Name according to the rules : ");
             }
         }
-
+        //Usecase 3
+        String email="" ;
+        System.out.println("enter your email : \n 1. First letter should not be special char \n " +
+                "2. email should have TDL at most 2 domains(.com , .in) \n " +
+                "3. It should not  have and alphanumeric , + , . , -  only these characters are allowed");
+        isInputValidated = false;
+        while (!isInputValidated) {
+            email = input.next();
+            if(UserValidation.validaEmail(email)){
+                System.out.println(email + " has passed email validation ");
+                isInputValidated = true;
+            }else{
+                System.out.println("Your Previous input " + email + " did not meet our rules");
+                System.out.println("Enter email according to the rules : ");
+            }
+        }
 
 
 
