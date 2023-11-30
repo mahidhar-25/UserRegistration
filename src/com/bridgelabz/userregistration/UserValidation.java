@@ -10,7 +10,7 @@ public class UserValidation {
 
     public static final String PHONE_NUMBER_REGEX = "(0|[+]91)?[7-9][0-9]{9}";
 
-    public static final String PASSWORD_REGEX = "^(?=.*[A-Z])\\S{8,}$";
+    public static final String PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[0-9])\\S{8,}$";
     /*
     @desc : function to validate whether entered first is name is valid or not
     @param : String - first name

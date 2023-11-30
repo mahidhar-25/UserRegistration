@@ -72,11 +72,12 @@ public class Main {
         }
 
 
-     //   Usecase 5 , 6
+     //   Usecase 5 , 6 , 7
         String password="" ;
         System.out.println("enter your password : \n" +
                 " 1. Password should contain at least 8 characters \n" +
-                " 2. Should have at least 1 Uppercase letter");
+                " 2. Should have at least 1 Uppercase letter \n" +
+                " 3. Should have atleast one numeric digit ");
         isInputValidated = false;
         while (!isInputValidated) {
             password = input.next();
