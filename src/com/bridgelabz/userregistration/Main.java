@@ -45,7 +45,7 @@ public class Main {
         isInputValidated = false;
         while (!isInputValidated) {
             email = input.next();
-            if(UserValidation.validaEmail(email)){
+            if(UserValidation.validateEmail(email)){
                 System.out.println(email + " has passed email validation ");
                 isInputValidated = true;
             }else{
@@ -62,11 +62,27 @@ public class Main {
         isInputValidated = false;
         while (!isInputValidated) {
             phoneNumber = input.next();
-            if(UserValidation.validaPhoneNumber(phoneNumber)){
+            if(UserValidation.validatePhoneNumber(phoneNumber)){
                 System.out.println(phoneNumber + " has passed phoneNumber validation ");
                 isInputValidated = true;
             }else{
                 System.out.println("Your Previous input " + phoneNumber + " did not meet our rules");
+                System.out.println("Enter phoneNumber according to the rules : ");
+            }
+        }
+
+
+     //   Usecase 5
+        String password="" ;
+        System.out.println("enter your phone number : \n 1. Password should contain atleast 8 characters");
+        isInputValidated = false;
+        while (!isInputValidated) {
+            password = input.next();
+            if(UserValidation.validatePassword(password)){
+                System.out.println(password + " has passed phoneNumber validation ");
+                isInputValidated = true;
+            }else{
+                System.out.println("Your Previous input " + password + " did not meet our rules");
                 System.out.println("Enter phoneNumber according to the rules : ");
             }
         }

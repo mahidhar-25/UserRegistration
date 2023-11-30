@@ -9,6 +9,8 @@ public class UserValidation {
     public static final String EMAIL_REGEX = "^[A-Za-z0-9]+[A-Za-z0-9-+]*([.][A-Za-z0-9-]+)*@[A-Za-z0-9-]+([.][a-zA-Z][a-zA-Z]+)([.][a-zA-Z][a-zA-Z]+)?$";
 
     public static final String PHONE_NUMBER_REGEX = "(0|[+]91)?[7-9][0-9]{9}";
+
+    public static final String PASSWORD_REGEX = "^\\S{8,}$";
     /*
     @desc : function to validate whether entered first is name is valid or not
     @param : String - first name
@@ -36,7 +38,7 @@ public class UserValidation {
     @param : String - email
     @return : boolean if it has match with regex pattern
      */
-    public static boolean validaEmail(String email){
+    public static boolean validateEmail(String email){
         Pattern emailRegex = Pattern.compile(EMAIL_REGEX);
         Matcher emailMatcher = emailRegex.matcher(email);
         return emailMatcher.matches();
@@ -47,9 +49,20 @@ public class UserValidation {
  @param : String - phone number
  @return : boolean if it has match with regex pattern
   */
-    public static boolean validaPhoneNumber(String phoneNumber){
+    public static boolean validatePhoneNumber(String phoneNumber){
         Pattern phoneNumberRegex = Pattern.compile(PHONE_NUMBER_REGEX);
         Matcher phoneNumberMatcher = phoneNumberRegex.matcher(phoneNumber);
         return phoneNumberMatcher.matches();
+    }
+
+    /*
+@desc : function to validate whether entered password is valid or not
+@param : String - password
+@return : boolean if it has match with regex pattern
+*/
+    public static boolean validatePassword(String password){
+        Pattern passwordRegex = Pattern.compile(PASSWORD_REGEX);
+        Matcher passwordMatcher = passwordRegex.matcher(password);
+        return passwordMatcher.matches();
     }
 }
