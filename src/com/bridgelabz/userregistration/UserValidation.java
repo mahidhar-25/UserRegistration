@@ -12,6 +12,7 @@ public class UserValidation {
 
     public static final String PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[\\W])\\S{8,}$";
 
+
     /* \\W
     @desc : function to validate whether entered first is name is valid or not
     @param : String - first name
@@ -66,4 +67,6 @@ public class UserValidation {
         Matcher passwordMatcher = passwordRegex.matcher(password);
         return passwordMatcher.matches();
     }
+
+
 }
