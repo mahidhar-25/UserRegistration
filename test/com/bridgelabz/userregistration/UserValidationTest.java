@@ -18,6 +18,7 @@ public class UserValidationTest {
     }
 /*
 @desc : verifying all possible valid emails all are validating or not with the help of streams
+this also satisfies for use case 10 parametrized testing
  */
     @Test
     public void allCorrectEmailsShouldPassTheTest(){
@@ -38,6 +39,7 @@ public class UserValidationTest {
     }
     /*
     @desc : verifying all possible invalid emails all are validating to false or not with the help of streams
+    this also satisfies for use case 10 parametrized testing
      */
     @Test
     public void allWrongEmailsShouldFailTheTest(){
