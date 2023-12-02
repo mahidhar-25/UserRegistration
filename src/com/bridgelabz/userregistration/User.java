@@ -1,11 +1,29 @@
 package com.bridgelabz.userregistration;
 
 public class User {
-    String firstName;
-    String lastName;
-    String phoneNumber;
-    String emailId;
-    /*
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String emailId;
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    private String Password;
+
+    public User(String firstName, String lastName, String phoneNumber, String emailId, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.emailId = emailId;
+        this.Password = password;
+    }
+/*
 
      @desc :  Gets the first name of the user.
      @params : no params

@@ -68,5 +68,18 @@ public class UserValidation {
         return passwordMatcher.matches();
     }
 
+    /*
+@desc : function to validate whether entered password is valid or not
+@param : String - password
+@return : boolean if it has match with regex pattern
+*/
+    public  boolean validateUser(User newUser){
+        boolean isValidationPassed = validateFirstName(newUser.getFirstName())&&
+                validateLastName(newUser.getLastName())&&
+                validateEmail(newUser.getEmailId())&&
+                validatePhoneNumber(newUser.getPhoneNumber())&&validatePassword(newUser.getPassword());
+        return isValidationPassed;
+    }
+
 
 }

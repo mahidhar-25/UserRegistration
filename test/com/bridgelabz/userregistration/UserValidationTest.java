@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class UserValidationTest {
     private UserValidation userValidation;
@@ -59,5 +59,59 @@ public class UserValidationTest {
         };
         int noOfCasesPassed = (int) Arrays.stream(invalidEmailArray).map(userValidation::validateEmail).filter((emailOutput) -> emailOutput).count();
         assertEquals(0 , noOfCasesPassed);
+    }
+    /*
+    @desc : verifying all possible valid user all are validating or not with 
+     */
+    @Test
+    public void happyTest(){
+        User user = new User("Mahidhar" , "Reddy" ,
+                "9876541230" ,  "mahi@gmail.com" , "Mahidhar#25");
+        assertTrue(userValidation.validateUser(user));
+    }
+    /*
+    @desc : verifying all possible invalid users all are validating to false or not sadTestFailForFirstName
+     */
+    @Test
+    public void sadTestFailForFirstName(){
+        User user = new User("mahidhar" , "Reddy" ,
+                "9876541230" ,  "mahi@gmail.com" , "Mahidhar#25");
+        assertFalse(userValidation.validateUser(user));
+    }
+    /*
+@desc : verifying all possible invalid users all are validating to false or not sadTestFailForLastName
+ */
+    @Test
+    public void sadTestFailForLastName(){
+        User user = new User("Mahidhar" , "Re" ,
+                "9876541230" ,  "mahi@gmail.com" , "Mahidhar#25");
+        assertFalse(userValidation.validateUser(user));
+    }
+    /*
+@desc : verifying all possible invalid users all are validating to false or not sadTestFailForEmail
+ */
+    @Test
+    public void sadTestFailForEmail(){
+        User user = new User("Mahidhar" , "Re" ,
+                "9876541230" ,  "mahi@gmail.com.ac.in" , "Mahidhar#25");
+        assertFalse(userValidation.validateUser(user));
+    }
+    /*
+@desc : verifying all possible invalid users all are validating to false or not sadTestFailPhoneNumber
+ */
+    @Test
+    public void sadTestFailPhoneNumber(){
+        User user = new User("Mahidhar" , "Re" ,
+                "98765412301" ,  "mahi@gmail.com" , "Mahidhar#25");
+        assertFalse(userValidation.validateUser(user));
+    }
+    /*
+@desc : verifying all possible invalid users all are validating to false or not sadTestFailPassword
+ */
+    @Test
+    public void sadTestFailPassword(){
+        User user = new User("Mahidhar" , "Re" ,
+                "98765412301" ,  "mahi@gmail.com" , "Mahidhar25");
+        assertFalse(userValidation.validateUser(user));
     }
 }
