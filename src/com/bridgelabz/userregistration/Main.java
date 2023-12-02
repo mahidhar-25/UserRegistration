@@ -6,8 +6,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("!!! welcome to user registration validation problem !!!");
         Scanner input = new Scanner(System.in);
-        int wrongInputCounter = 0;
         boolean isInputValidated = false;
+
+        UserValidation userValidation = new UserValidation();
 
         //Usecase 1
         String firstName="" ;
@@ -15,7 +16,7 @@ public class Main {
 
         while (!isInputValidated) {
             firstName = input.next();
-            if(UserValidation.validateFirstName(firstName)){
+            if(userValidation.validateFirstName(firstName)){
                 System.out.println(firstName + " has passed firstname validation ");
                 isInputValidated = true;
             }else{
@@ -29,7 +30,7 @@ public class Main {
        isInputValidated = false;
         while (!isInputValidated) {
             lastName = input.next();
-            if(UserValidation.validateLastName(lastName)){
+            if(userValidation.validateLastName(lastName)){
                 System.out.println(lastName + " has passed lastname validation ");
                 isInputValidated = true;
             }else{
@@ -45,7 +46,7 @@ public class Main {
         isInputValidated = false;
         while (!isInputValidated) {
             email = input.next();
-            if(UserValidation.validateEmail(email)){
+            if(userValidation.validateEmail(email)){
                 System.out.println(email + " has passed email validation ");
                 isInputValidated = true;
             }else{
@@ -62,7 +63,7 @@ public class Main {
         isInputValidated = false;
         while (!isInputValidated) {
             phoneNumber = input.next();
-            if(UserValidation.validatePhoneNumber(phoneNumber)){
+            if(userValidation.validatePhoneNumber(phoneNumber)){
                 System.out.println(phoneNumber + " has passed phoneNumber validation ");
                 isInputValidated = true;
             }else{
@@ -72,16 +73,18 @@ public class Main {
         }
 
 
-     //   Usecase 5 , 6 , 7
+     //   Usecase 5 , 6 , 7 , 8
         String password="" ;
-        System.out.println("enter your password : \n" +
+        System.out.print(
                 " 1. Password should contain at least 8 characters \n" +
                 " 2. Should have at least 1 Uppercase letter \n" +
-                " 3. Should have atleast one numeric digit ");
+                " 3. Should have at least 1 numeric digit \n" +
+                " 4. Should have at least 1 special character \n" +
+                        "\"enter your password : ");
         isInputValidated = false;
         while (!isInputValidated) {
             password = input.next();
-            if(UserValidation.validatePassword(password)){
+            if(userValidation.validatePassword(password)){
                 System.out.println(password + " has passed password validation ");
                 isInputValidated = true;
             }else{
@@ -89,7 +92,6 @@ public class Main {
                 System.out.println("Enter password according to the rules : ");
             }
         }
-
 
 
     }

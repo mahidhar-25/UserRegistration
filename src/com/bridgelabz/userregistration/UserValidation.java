@@ -10,13 +10,14 @@ public class UserValidation {
 
     public static final String PHONE_NUMBER_REGEX = "(0|[+]91)?[7-9][0-9]{9}";
 
-    public static final String PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[0-9])\\S{8,}$";
-    /*
+    public static final String PASSWORD_REGEX = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[\\W])\\S{8,}$";
+
+    /* \\W
     @desc : function to validate whether entered first is name is valid or not
     @param : String - first name
     @return : boolean if it has match with regex pattern
      */
-    public static boolean validateFirstName(String firstName){
+    public  boolean validateFirstName(String firstName){
         Pattern firstNameRegex = Pattern.compile(FIRST_NAME_REGEX);
         Matcher firstNameMatcher = firstNameRegex.matcher(firstName);
         return firstNameMatcher.matches();
@@ -27,7 +28,7 @@ public class UserValidation {
     @param : String - last name
     @return : boolean if it has match with regex pattern
      */
-    public static boolean validateLastName(String lastName){
+    public  boolean validateLastName(String lastName){
         Pattern lastNameRegex = Pattern.compile(LAST_NAME_REGEX);
         Matcher lastNameMatcher = lastNameRegex.matcher(lastName);
         return lastNameMatcher.matches();
@@ -38,7 +39,7 @@ public class UserValidation {
     @param : String - email
     @return : boolean if it has match with regex pattern
      */
-    public static boolean validateEmail(String email){
+    public  boolean validateEmail(String email){
         Pattern emailRegex = Pattern.compile(EMAIL_REGEX);
         Matcher emailMatcher = emailRegex.matcher(email);
         return emailMatcher.matches();
@@ -49,7 +50,7 @@ public class UserValidation {
  @param : String - phone number
  @return : boolean if it has match with regex pattern
   */
-    public static boolean validatePhoneNumber(String phoneNumber){
+    public  boolean validatePhoneNumber(String phoneNumber){
         Pattern phoneNumberRegex = Pattern.compile(PHONE_NUMBER_REGEX);
         Matcher phoneNumberMatcher = phoneNumberRegex.matcher(phoneNumber);
         return phoneNumberMatcher.matches();
@@ -60,7 +61,7 @@ public class UserValidation {
 @param : String - password
 @return : boolean if it has match with regex pattern
 */
-    public static boolean validatePassword(String password){
+    public  boolean validatePassword(String password){
         Pattern passwordRegex = Pattern.compile(PASSWORD_REGEX);
         Matcher passwordMatcher = passwordRegex.matcher(password);
         return passwordMatcher.matches();
