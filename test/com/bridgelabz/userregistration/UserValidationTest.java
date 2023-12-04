@@ -21,7 +21,7 @@ public class UserValidationTest {
 this also satisfies for use case 10 parametrized testing
  */
     @Test
-    public void allCorrectEmailsShouldPassTheTest(){
+    public void allCorrectEmailsShouldPassTheTest() throws UserInvalidException {
         // Valid emails
         String[] validEmailArray = {
                 "abc@yahoo.com",
@@ -34,7 +34,16 @@ this also satisfies for use case 10 parametrized testing
                 "abc@gmail.com.com",
                 "abc+100@gmail.com"
         };
-        int noOfCasesFailed = (int) Arrays.stream(validEmailArray).map(userValidation::validateEmail).filter((emailOutput) -> !emailOutput).count();
+        int noOfCasesFailed=0;
+        noOfCasesFailed = (int) Arrays.stream(validEmailArray).map(email -> {
+            try {
+                return userValidation.validateEmail(email);
+            } catch (UserInvalidException e) {
+                assertEquals(UserInvalidError.EMAIL, e.error);
+                return false;
+            }
+        }).filter((emailOutput) -> !emailOutput).count();
+
         assertEquals(0 , noOfCasesFailed);
     }
     /*
@@ -59,61 +68,112 @@ this also satisfies for use case 10 parametrized testing
                 "abc@gmail.com.1a",
                 "abc@gmail.com.aa.au"
         };
-        int noOfCasesPassed = (int) Arrays.stream(invalidEmailArray).map(userValidation::validateEmail).filter((emailOutput) -> emailOutput).count();
+        int noOfCasesPassed=0;
+            noOfCasesPassed = (int) Arrays.stream(invalidEmailArray).map(email -> {
+                        try {
+                            return userValidation.validateEmail(email);
+                        } catch (UserInvalidException e) {
+                            assertEquals(UserInvalidError.EMAIL, e.error);
+                            return false;
+                        }
+                    })
+                    .filter((emailOutput) -> emailOutput).count();
+
         assertEquals(0 , noOfCasesPassed);
     }
     /*
     @desc : verifying all possible valid user all are validating or not with 
      */
     @Test
-    public void happyTest(){
+    public void happyTest() throws UserInvalidException {
         User user = new User("Mahidhar" , "Reddy" ,
                 "9876541230" ,  "mahi@gmail.com" , "Mahidhar#25");
-        assertTrue(userValidation.validateUser(user));
+        boolean isValidated = true;
+        try{
+            isValidated =  userValidation.validateUser(user);
+        }catch(UserInvalidException e) {
+            assertEquals(UserInvalidError.USER, e.error);
+        }
+        assertTrue(isValidated);
     }
     /*
     @desc : verifying all possible invalid users all are validating to false or not sadTestFailForFirstName
      */
     @Test
-    public void sadTestFailForFirstName(){
+    public void sadTestFailForFirstName() throws UserInvalidException {
         User user = new User("mahidhar" , "Reddy" ,
                 "9876541230" ,  "mahi@gmail.com" , "Mahidhar#25");
-        assertFalse(userValidation.validateUser(user));
+        boolean isValidated = true;
+        try{
+            isValidated =  userValidation.validateUser(user);
+        }catch(UserInvalidException e) {
+            assertEquals(UserInvalidError.FIRSTNAME, e.error);
+            isValidated = false;
+        }
+        assertFalse(isValidated);
     }
     /*
 @desc : verifying all possible invalid users all are validating to false or not sadTestFailForLastName
  */
     @Test
-    public void sadTestFailForLastName(){
+    public void sadTestFailForLastName() throws UserInvalidException {
         User user = new User("Mahidhar" , "Re" ,
                 "9876541230" ,  "mahi@gmail.com" , "Mahidhar#25");
-        assertFalse(userValidation.validateUser(user));
+        boolean isValidated = true;
+        try{
+            isValidated =  userValidation.validateUser(user);
+        }catch(UserInvalidException e) {
+            assertEquals(UserInvalidError.LASTNAME, e.error);
+            isValidated = false;
+        }
+        assertFalse(isValidated);
     }
     /*
 @desc : verifying all possible invalid users all are validating to false or not sadTestFailForEmail
  */
     @Test
-    public void sadTestFailForEmail(){
-        User user = new User("Mahidhar" , "Re" ,
+    public void sadTestFailForEmail() throws UserInvalidException {
+        User user = new User("Mahidhar" , "Reddy" ,
                 "9876541230" ,  "mahi@gmail.com.ac.in" , "Mahidhar#25");
-        assertFalse(userValidation.validateUser(user));
+        boolean isValidated = true;
+        try{
+            isValidated =  userValidation.validateUser(user);
+        }catch(UserInvalidException e) {
+            assertEquals(UserInvalidError.EMAIL, e.error);
+            isValidated = false;
+        }
+        assertFalse(isValidated);
     }
     /*
 @desc : verifying all possible invalid users all are validating to false or not sadTestFailPhoneNumber
  */
     @Test
-    public void sadTestFailPhoneNumber(){
-        User user = new User("Mahidhar" , "Re" ,
+    public void sadTestFailPhoneNumber() throws UserInvalidException {
+        User user = new User("Mahidhar" , "Reddy" ,
                 "98765412301" ,  "mahi@gmail.com" , "Mahidhar#25");
-        assertFalse(userValidation.validateUser(user));
+        boolean isValidated = true;
+        try{
+            isValidated =  userValidation.validateUser(user);
+        }catch(UserInvalidException e) {
+            assertEquals(UserInvalidError.PHONENUMBER, e.error);
+            isValidated = false;
+        }
+        assertFalse(isValidated);
     }
     /*
 @desc : verifying all possible invalid users all are validating to false or not sadTestFailPassword
  */
     @Test
-    public void sadTestFailPassword(){
-        User user = new User("Mahidhar" , "Re" ,
-                "98765412301" ,  "mahi@gmail.com" , "Mahidhar25");
-        assertFalse(userValidation.validateUser(user));
+    public void sadTestFailPassword() throws UserInvalidException {
+        User user = new User("Mahidhar" , "Reddy" ,
+                "9876502301" ,  "mahi@gmail.com" , "Mahidhar25");
+        boolean isValidated = true;
+        try{
+            isValidated =  userValidation.validateUser(user);
+        }catch(UserInvalidException e) {
+            assertEquals(UserInvalidError.PASSWORD, e.error);
+            isValidated = false;
+        }
+        assertFalse(isValidated);
     }
 }

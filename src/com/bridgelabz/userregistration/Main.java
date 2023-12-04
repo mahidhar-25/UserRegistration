@@ -12,84 +12,94 @@ public class Main {
 
         //Usecase 1
         String firstName="" ;
-        System.out.println("enter your first name : \n 1. First letter should be caps \n 2. firstName should be min of 3 char  ");
 
         while (!isInputValidated) {
+            System.out.println("enter your first name : \n " +
+                    "1. First letter should be caps \n" +
+                    " 2. firstName should be min of 3 char  ");
             firstName = input.next();
-            if(userValidation.validateFirstName(firstName)){
-                System.out.println(firstName + " has passed firstname validation ");
-                isInputValidated = true;
-            }else{
-                System.out.println("Your Previous input " + firstName + " did not meet our rules");
-                System.out.println("Enter First Name according to the rules : ");
+            try {
+                if(userValidation.validateFirstName(firstName)){
+                    System.out.println(firstName + " has passed firstname validation ");
+                    isInputValidated = true;
+                }
+            } catch (UserInvalidException e) {
+                System.out.println("Exception: " + e.getMessage() + ", Error: " + e.error);
             }
         }
         //Usecase 2
         String lastName="" ;
-        System.out.println("enter your last name : \n 1. First letter should be caps \n 2. lastName should be min of 3 char  ");
-       isInputValidated = false;
+        isInputValidated = false;
         while (!isInputValidated) {
+            System.out.println("enter your last name : \n 1. First letter should be caps \n 2. lastName should be min of 3 char  ");
+
             lastName = input.next();
-            if(userValidation.validateLastName(lastName)){
-                System.out.println(lastName + " has passed lastname validation ");
-                isInputValidated = true;
-            }else{
-                System.out.println("Your Previous input " + lastName + " did not meet our rules");
-                System.out.println("Enter Last Name according to the rules : ");
+            try {
+                if (userValidation.validateLastName(lastName)) {
+                    System.out.println(lastName + " has passed lastname validation ");
+                    isInputValidated = true;
+                }
+            }catch (UserInvalidException e) {
+                System.out.println("Exception: " + e.getMessage() + ", Error: " + e.error);
             }
         }
         //Usecase 3
         String email="" ;
-        System.out.println("enter your email : \n 1. First letter should not be special char \n " +
-                "2. email should have TDL at most 2 domains(.com , .in) \n " +
-                "3. It should not  have and alphanumeric , + , . , -  only these characters are allowed");
         isInputValidated = false;
         while (!isInputValidated) {
+            System.out.println("enter your email : \n 1. First letter should not be special char \n " +
+                    "2. email should have TDL at most 2 domains(.com , .in) \n " +
+                    "3. It should not  have and alphanumeric , + , . , -  only these characters are allowed");
+
             email = input.next();
-            if(userValidation.validateEmail(email)){
-                System.out.println(email + " has passed email validation ");
-                isInputValidated = true;
-            }else{
-                System.out.println("Your Previous input " + email + " did not meet our rules");
-                System.out.println("Enter email according to the rules : ");
+            try {
+                if (userValidation.validateEmail(email)) {
+                    System.out.println(email + " has passed email validation ");
+                    isInputValidated = true;
+                }
+            }catch (UserInvalidException e) {
+                System.out.println("Exception: " + e.getMessage() + ", Error: " + e.error);
             }
         }
 
         //Usecase 4
         String phoneNumber="" ;
-        System.out.println("enter your phone number : \n 1. Country code should be 91 / 0 (if landline) \n " +
-                "2. phone number should start with 7 , 8 , 9 \n " +
-                "3. Phone number should have exactly 10 digits");
         isInputValidated = false;
         while (!isInputValidated) {
+            System.out.println("enter your phone number : \n 1. Country code should be 91 / 0 (if landline) \n " +
+                    "2. phone number should start with 7 , 8 , 9 \n " +
+                    "3. Phone number should have exactly 10 digits");
+
             phoneNumber = input.next();
-            if(userValidation.validatePhoneNumber(phoneNumber)){
-                System.out.println(phoneNumber + " has passed phoneNumber validation ");
-                isInputValidated = true;
-            }else{
-                System.out.println("Your Previous input " + phoneNumber + " did not meet our rules");
-                System.out.println("Enter phoneNumber according to the rules : ");
+            try {
+                if (userValidation.validatePhoneNumber(phoneNumber)) {
+                    System.out.println(phoneNumber + " has passed phoneNumber validation ");
+                    isInputValidated = true;
+                }
+            }catch (UserInvalidException e) {
+                System.out.println("Exception: " + e.getMessage() + ", Error: " + e.error);
             }
         }
 
 
      //   Usecase 5 , 6 , 7 , 8
         String password="" ;
-        System.out.print(
-                " 1. Password should contain at least 8 characters \n" +
-                " 2. Should have at least 1 Uppercase letter \n" +
-                " 3. Should have at least 1 numeric digit \n" +
-                " 4. Should have at least 1 special character \n" +
-                        "\"enter your password : ");
         isInputValidated = false;
         while (!isInputValidated) {
+            System.out.print(
+                    " 1. Password should contain at least 8 characters \n" +
+                            " 2. Should have at least 1 Uppercase letter \n" +
+                            " 3. Should have at least 1 numeric digit \n" +
+                            " 4. Should have at least 1 special character \n" +
+                            "\"enter your password : ");
             password = input.next();
-            if(userValidation.validatePassword(password)){
-                System.out.println(password + " has passed password validation ");
-                isInputValidated = true;
-            }else{
-                System.out.println("Your Previous input " + password + " did not meet our rules");
-                System.out.println("Enter password according to the rules : ");
+            try {
+                if (userValidation.validatePassword(password)) {
+                    System.out.println(password + " has passed password validation ");
+                    isInputValidated = true;
+                }
+            }catch (UserInvalidException e) {
+                System.out.println("Exception: " + e.getMessage() + ", Error: " + e.error);
             }
         }
 
